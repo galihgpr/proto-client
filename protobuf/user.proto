@@ -1,0 +1,26 @@
+
+syntax="proto3";
+
+//Definisi Package di Golang. Ketika 
+//protobuf digenerate, maka akan mengikuti struktur folder
+//berikut
+option go_package = "github.com/galihgpr/proto-client/protobuf";
+option objc_class_prefix = "EOP";
+
+package proto.user;
+
+//Request Payload
+message GreetingRequest{
+  string name = 1;
+  string salutation = 2;
+}
+
+//Response Payload
+message GreetingResponse{
+  string GreetingMessage = 1;
+}
+
+//Define RPC service
+service UserService{
+  rpc GreetUser(GreetingRequest) returns (GreetingResponse);
+}
